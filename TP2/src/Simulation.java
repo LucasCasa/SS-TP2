@@ -22,13 +22,12 @@ public class Simulation {
     public void simulate(){
         try {
         FileWriter dist = new FileWriter("out.txt");
-            dist.write(particles.size() + "\n" + grid.size+"\n");
         for(int i = 0; i<times; i++){
             updatePosition();
             grid.setCells(particles);
             List<ArrayList<Particle>> n = grid.checkNeighbors(1);
             updateParticles(n);
-                dist.write("\n");
+            dist.write(particles.size() + "\n" + grid.size+"\n");
                 for(Particle p : particles){
                     dist.write(p.getX()+"\t"+ p.getY()+"\t"+ p.getRadius()+"\t255\t255\t255\n");
                 }
