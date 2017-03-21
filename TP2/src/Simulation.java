@@ -28,7 +28,7 @@ public class Simulation {
             grid.setCells(particles);
             List<ArrayList<Particle>> n = grid.checkNeighbors(1);
             updateParticles(n);
-                dist.write(i+"\n");
+                dist.write("\n");
                 for(Particle p : particles){
                     dist.write(p.getX()+"\t"+ p.getY()+"\t"+ p.getRadius()+"\t255\t255\t255\n");
                 }
