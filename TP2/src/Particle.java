@@ -9,14 +9,25 @@ public class Particle {
     double radius;
     double x;
     double y;
+    Vector speed;
     List<Particle> neighbors;
 
-    public Particle(int id,double radius, double x, double y){
+    public Particle(int id,double radius, double x, double y,Vector speed){
         this.id = id;
         this.radius = radius;
         this.x = x;
         this.y = y;
-        this.neighbors = new ArrayList<Particle>();
+        this.speed = speed;
+        this.neighbors = new ArrayList<>();
+    }
+
+    public Particle(int id,double radius, double x, double y,double velx,double vely){
+        this.id = id;
+        this.radius = radius;
+        this.x = x;
+        this.y = y;
+        this.speed = new Vector(Math.sqrt(velx*velx + vely*vely),Math.atan2(velx,vely));
+        this.neighbors = new ArrayList<>();
     }
 
     public Particle(int id, double radius){
@@ -49,6 +60,14 @@ public class Particle {
 
     public int getId() {
         return id;
+    }
+
+    public Vector getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(Vector speed) {
+        this.speed = speed;
     }
 
     @Override

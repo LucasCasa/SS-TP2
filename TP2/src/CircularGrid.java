@@ -13,9 +13,9 @@ public class CircularGrid extends Grid {
     }
 
     @Override
-    public ArrayList<ArrayList<Integer>> checkNeighbors(double rc, int size) {
-        ArrayList<ArrayList<Integer>> neigh = new ArrayList<>(particles.size());
-        for(int i = 0; i< size;i++){
+    public ArrayList<ArrayList<Particle>> checkNeighbors(double rc) {
+        ArrayList<ArrayList<Particle>> neigh = new ArrayList<>(particles.size());
+        for(int i = 0; i< particles.size();i++){
             neigh.add(new ArrayList<>(200));
         }
 
@@ -26,24 +26,24 @@ public class CircularGrid extends Grid {
                     for (int l = k + 1; l < grid[i][j].getParticleList().size(); l++) {
                         Particle p1 = grid[i][j].getParticleList().get(l);
                         if (dist2mod(p, p1) < (p.radius + p1.radius + rc) * (p.radius + p1.radius + rc)) {
-                            neigh.get(p.getId() - 1).add(p1.getId());
-                            neigh.get(p1.getId() - 1).add(p.getId());
+                            neigh.get(p.getId() - 1).add(p1);
+                            neigh.get(p1.getId() - 1).add(p);
                         }
                     }
 
                     if (i + 1 <= grid.length - 1) {
                         for (Particle p1 : grid[i + 1][j].getParticleList()) {
                             if (dist2mod(p, p1) < (p.radius + p1.radius + rc) * (p.radius + p1.radius + rc)) {
-                                neigh.get(p.getId() - 1).add(p1.getId());
-                                neigh.get(p1.getId() - 1).add(p.getId());
+                                neigh.get(p.getId() - 1).add(p1);
+                                neigh.get(p1.getId() - 1).add(p);
                             }
                         }
                     }
                     if (i - 1 >= 0 && j + 1 <= grid.length - 1) {
                         for (Particle p1 : grid[i - 1][j + 1].getParticleList()) {
                             if (dist2mod(p, p1) < (p.radius + p1.radius + rc) * (p.radius + p1.radius + rc)) {
-                                neigh.get(p.getId() - 1).add(p1.getId());
-                                neigh.get(p1.getId() - 1).add(p.getId());
+                                neigh.get(p.getId() - 1).add(p1);
+                                neigh.get(p1.getId() - 1).add(p);
                             }
                         }
 
@@ -51,56 +51,56 @@ public class CircularGrid extends Grid {
                     if (j + 1 <= grid.length - 1) {
                         for (Particle p1 : grid[i][j + 1].getParticleList()) {
                             if (dist2mod(p, p1) < (p.radius + p1.radius + rc) * (p.radius + p1.radius + rc)) {
-                                neigh.get(p.getId() - 1).add(p1.getId());
-                                neigh.get(p1.getId() - 1).add(p.getId());
+                                neigh.get(p.getId() - 1).add(p1);
+                                neigh.get(p1.getId() - 1).add(p);
                             }
                         }
                     }
                     if (j + 1 <= grid.length - 1 && i + 1 <= grid.length - 1) {
                         for (Particle p1 : grid[i + 1][j + 1].getParticleList()) {
                             if (dist2mod(p, p1) < (p.radius + p1.radius + rc) * (p.radius + p1.radius + rc)) {
-                                neigh.get(p.getId() - 1).add(p1.getId());
-                                neigh.get(p1.getId() - 1).add(p.getId());
+                                neigh.get(p.getId() - 1).add(p1);
+                                neigh.get(p1.getId() - 1).add(p);
                             }
                         }
                     }
                     if (j - 1 < 0) {
                         for (Particle p1 : grid[Math.floorMod(i - 1, grid.length) ][grid.length - 1].getParticleList()) {
                             if (dist2mod(p, p1) < (p.radius + p1.radius + rc) * (p.radius + p1.radius + rc)) {
-                                neigh.get(p.getId() - 1).add(p1.getId());
-                                neigh.get(p1.getId() - 1).add(p.getId());
+                                neigh.get(p.getId() - 1).add(p1);
+                                neigh.get(p1.getId() - 1).add(p);
                             }
                         }
                         for (Particle p1 : grid[Math.floorMod(i , grid.length)][grid.length - 1].getParticleList()) {
                             if (dist2mod(p, p1) < (p.radius + p1.radius + rc) * (p.radius + p1.radius + rc)) {
-                                neigh.get(p.getId() - 1).add(p1.getId());
-                                neigh.get(p1.getId() - 1).add(p.getId());
+                                neigh.get(p.getId() - 1).add(p1);
+                                neigh.get(p1.getId() - 1).add(p);
                             }
                         }
                         for (Particle p1 : grid[Math.floorMod(i + 1, grid.length)][grid.length - 1].getParticleList()) {
                             if (dist2mod(p, p1) < (p.radius + p1.radius + rc) * (p.radius + p1.radius + rc)) {
-                                neigh.get(p.getId() - 1).add(p1.getId());
-                                neigh.get(p1.getId() - 1).add(p.getId());
+                                neigh.get(p.getId() - 1).add(p1);
+                                neigh.get(p1.getId() - 1).add(p);
                             }
                         }
                     }
                     if (i - 1 < 0) {
                         for (Particle p1 : grid[grid.length - 1][Math.floorMod(j - 1, grid.length)].getParticleList()) {
                             if (dist2mod(p, p1) < (p.radius + p1.radius + rc) * (p.radius + p1.radius + rc)) {
-                                neigh.get(p.getId() - 1).add(p1.getId());
-                                neigh.get(p1.getId() - 1).add(p.getId());
+                                neigh.get(p.getId() - 1).add(p1);
+                                neigh.get(p1.getId() - 1).add(p);
                             }
                         }
                         for (Particle p1 : grid[grid.length - 1][Math.floorMod(j, grid.length)].getParticleList()) {
                             if (dist2mod(p, p1) < (p.radius + p1.radius + rc) * (p.radius + p1.radius + rc)) {
-                                neigh.get(p.getId() - 1).add(p1.getId());
-                                neigh.get(p1.getId() - 1).add(p.getId());
+                                neigh.get(p.getId() - 1).add(p1);
+                                neigh.get(p1.getId() - 1).add(p);
                             }
                         }
                         for (Particle p1 : grid[grid.length - 1][(j + 1) % grid.length].getParticleList()) {
                             if (dist2mod(p, p1) < (p.radius + p1.radius + rc) * (p.radius + p1.radius + rc)) {
-                                neigh.get(p.getId() - 1).add(p1.getId());
-                                neigh.get(p1.getId() - 1).add(p.getId());
+                                neigh.get(p.getId() - 1).add(p1);
+                                neigh.get(p1.getId() - 1).add(p);
                             }
                         }
                     }

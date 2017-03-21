@@ -17,15 +17,14 @@ public abstract class Grid {
         this.size = size;
         this.cellSide = cellSide;
 
+    }
+
+    public void setCells(List<Particle> particles){
         for(int i=0; i < (int)(size / cellSide)+1; i++){
             for(int j=0; j< (int)(size / cellSide)+1; j++){
                 grid[i][j] = new Cell(cellSide);
             }
         }
-
-    }
-
-    public void setCells(List<Particle> particles, int l){
         int x;
         int y;
         ammount = particles.size();
@@ -41,7 +40,7 @@ public abstract class Grid {
 
 
 
-    public abstract ArrayList<ArrayList<Integer>> checkNeighbors(double rc, int size);
+    public abstract ArrayList<ArrayList<Particle>> checkNeighbors(double rc);
 
     public void print(){
         StringBuilder sb = new StringBuilder();
