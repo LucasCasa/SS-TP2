@@ -15,8 +15,8 @@ public class Main {
 
         try {
             // COMIENZO - MANEJO DE ARCHIVOS
-            File fs = new File("Static300.txt");
-            File ds = new File("Dynamic300.txt");
+            File fs = new File("Static500.txt");
+            File ds = new File("Dynamic500.txt");
 
             Scanner sc1 = new Scanner(fs);
             Scanner sc2 = new Scanner(ds);
@@ -40,7 +40,7 @@ public class Main {
                 ps.add(new Particle(i+1,sc1.nextDouble() ,sc2.nextDouble() , sc2.nextDouble(), sc2.nextDouble(), sc2.nextDouble()));
                 sc1.nextDouble();
             }
-            Simulation s = new Simulation(ps,l,1000,0.1);
+            Simulation s = new Simulation(ps,l,1000,2);
             s.simulate();
         } catch (Exception e) {
             System.out.println("ERROR");

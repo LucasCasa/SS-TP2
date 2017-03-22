@@ -22,7 +22,7 @@ public class Simulation {
         try {
             double xSum;
             double ySum;
-            double va ;
+            double va = 0;
 
             System.out.println("CUANTO VALE TIMES? " + times);
             FileWriter dist = new FileWriter("out.txt");
@@ -34,25 +34,28 @@ public class Simulation {
             dist.write(particles.size() + "\n" + grid.size+"\n");
             xSum = 0.0;
             ySum = 0.0;
+            setAngles();
                 for(Particle p : particles){
-                    dist.write(p.getX()+"\t"+ p.getY()+"\t"+ 0.05+"\t255\t255\t255\n");
-                    //System.out.println("CUANTO VALE EL MODULO DE SPEED? " + p.getSpeed().getModule());
+                    dist.write(p.getX()+"\t"+ p.getY()+"\t"+ 0.1+"\t"+ (Math.sin(p.speed.angle)*255) + "\t" + (Math.cos(p.speed.angle)*255) +" \t"+ 255 +"\n");
+
                     xSum += p.speed.module*Math.cos(p.speed.angle);
                     ySum += p.speed.module*Math.sin(p.speed.angle);
 
-
-
                 }
-                //System.out.println("xSum vale = " + xSum);
-                //System.out.println("ySum vale = " + ySum);
-
             va = (Math.sqrt((xSum*xSum) + (ySum*ySum)))/(particles.size()*0.03);
-
+            System.out.println("Va VALE: "+ va);
         }
             dist.close();
             System.out.println("N VALE: " + particles.size());
+            System.out.println("Va VALE: "+ va);
         }catch (Exception e){
             e.printStackTrace();
+        }
+    }
+
+    private void setAngles() {
+        for(Particle p : particles){
+            p.speed.angle = p.nextSpeed.angle;
         }
     }
 
@@ -81,7 +84,7 @@ public class Simulation {
         for(int i = 0; i<n.size();i++){
             Particle p = particles.get(i);
             double avg = getAverageAngle(p,n.get(i));
-            p.speed.angle =  (avg + (Math.random()-0.5)*noise);
+            p.nextSpeed.angle =  (avg + (Math.random()-0.5)*noise);
         }
     }
 

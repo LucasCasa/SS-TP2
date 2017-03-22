@@ -9,6 +9,7 @@ public class Particle {
     double radius;
     double x;
     double y;
+    Vector nextSpeed;
     Vector speed;
     List<Particle> neighbors;
 
@@ -18,6 +19,7 @@ public class Particle {
         this.x = x;
         this.y = y;
         this.speed = speed;
+        this.nextSpeed = new Vector(0.03,0);
         this.neighbors = new ArrayList<>();
     }
 
@@ -26,6 +28,7 @@ public class Particle {
         this.radius = radius;
         this.x = x;
         this.y = y;
+        this.nextSpeed = new Vector(0.03,0);
         this.speed = new Vector(Math.sqrt(velx*velx + vely*vely),Math.atan2(velx, vely));
         this.neighbors = new ArrayList<>();
     }
@@ -33,6 +36,7 @@ public class Particle {
     public Particle(int id, double radius){
         this.id = id;
         this.radius = radius;
+        this.nextSpeed = new Vector(0.03,0);
     }
 
     public double getRadius() {
@@ -58,6 +62,7 @@ public class Particle {
         this.y = y;
     }
 
+    //System.out.println("CUANTO VALE EL MODULO DE SPEED? " + p.getSpeed().getModule())
     public int getId() {
         return id;
     }
