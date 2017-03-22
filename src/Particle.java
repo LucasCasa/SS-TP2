@@ -26,7 +26,7 @@ public class Particle {
         this.radius = radius;
         this.x = x;
         this.y = y;
-        this.speed = new Vector(Math.sqrt(velx*velx + vely*vely),Math.atan2(velx,vely));
+        this.speed = new Vector(Math.sqrt(velx*velx + vely*vely),Math.atan2(velx, vely));
         this.neighbors = new ArrayList<>();
     }
 
