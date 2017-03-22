@@ -38,9 +38,8 @@ public class Main {
 
 
                 ps.add(new Particle(i+1,sc1.nextDouble() ,sc2.nextDouble() , sc2.nextDouble(), sc2.nextDouble(), sc2.nextDouble()));
-                sc1.nextDouble();
             }
-            Simulation s = new Simulation(ps,l,10,0.5);
+            Simulation s = new Simulation(ps,l,100,0.1);
             s.simulate();
         } catch (Exception e) {
             System.out.println("ERROR");

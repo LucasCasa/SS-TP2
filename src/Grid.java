@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -30,8 +29,13 @@ public abstract class Grid {
         ammount = particles.size();
         this.particles = particles;
         for(Particle p: particles){
+
+            //System.out.println("LA POSICION EN X VALE: " + p.getX());
+            //System.out.println("LA POSICION EN Y VALE: " + p.getY());
             x = (int)(p.getX() / cellSide);
             y = (int)(p.getY() / cellSide);
+            //System.out.println("CELDA X: " + x);
+            //System.out.println("CELDA Y: " + y);
 
             this.grid[x][y].particleList.add(p);
         }
