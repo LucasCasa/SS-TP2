@@ -36,7 +36,7 @@ public class Simulation {
             ySum = 0.0;
             setAngles();
                 for(Particle p : particles){
-                    dist.write(p.getX()+"\t"+ p.getY()+"\t"+ 0.1+"\t"+ (Math.sin(p.speed.angle)*255) + "\t" + (Math.cos(p.speed.angle)*255) +" \t"+ 255 +"\n");
+                    dist.write(p.getX()+"\t"+ p.getY()+"\t"+ 0.1+"\t"+ ((Math.sin(p.speed.angle)/2 + 0.5)) + "\t" + ((Math.cos(p.speed.angle)/2 + 0.5)) +" \t"+ 1 +"\n");
 
                     xSum += p.speed.module*Math.cos(p.speed.angle);
                     ySum += p.speed.module*Math.sin(p.speed.angle);

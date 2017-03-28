@@ -112,8 +112,8 @@ public class CircularGrid extends Grid {
     }
 
     public double dist2mod(Particle p1, Particle p2){
-        double diffx = Math.min(p2.x-p1.x,size-(p2.x-p1.x));
-        double diffy = Math.min(p2.y-p1.y,size-(p2.y-p1.y));
+        double diffx = Math.min(Math.abs(p2.x-p1.x),size-Math.abs(p2.x-p1.x));
+        double diffy = Math.min(Math.abs(p2.y-p1.y),size-Math.abs(p2.y-p1.y));
         return diffx*diffx + diffy*diffy;
     }
 

@@ -15,8 +15,8 @@ public class Main {
 
         try {
             // COMIENZO - MANEJO DE ARCHIVOS
-            File fs = new File("Static500.txt");
-            File ds = new File("Dynamic500.txt");
+            File fs = new File("Static.txt");
+            File ds = new File("Dynamic.txt");
 
             Scanner sc1 = new Scanner(fs);
             Scanner sc2 = new Scanner(ds);
